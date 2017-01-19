@@ -2,13 +2,17 @@ let path = require("path");
 let dirname = path.resolve("./");
 let webpack = require("webpack");
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
+let CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let vendorModules = ['lodash', 'three'];
 
 function createConfig(isDebug) {
   let devtool = isDebug ? 'eval-source-map' : 'source-map';
   let plugins = [
-    new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.js")
+    new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.js"),
+    new CopyWebpackPlugin([
+      { from: 'src/client/sprites', to: 'sprites' }
+    ]),
   ];
 
   let cssLoader = { test: /\.css$/, loader: 'style!css' };
@@ -17,7 +21,7 @@ function createConfig(isDebug) {
 
   let apps = {
     starter: ['./src/client/starter/index.js'],
-    teste2: ['./src/client/teste2/index.js']
+    moviment: ['./src/client/moviment/index.js']
   };
 
   if (!isDebug) {
@@ -37,7 +41,7 @@ function createConfig(isDebug) {
       application: appEntry,
       vendor: vendorModules,
       starter: apps.starter,
-      teste2: apps.teste2,
+      moviment: apps.moviment,
     },
     output: {
       path: path.join(dirname, 'public', 'build'),

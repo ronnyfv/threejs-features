@@ -73,9 +73,9 @@ app.get('/starter', (req, res) => {
   });
 });
 
-app.get('/teste2', (req, res) => {
-  res.render('teste2/index', {
-    layout: 'teste2/layout',
+app.get('/moviment', (req, res) => {
+  res.render('moviment/index', {
+    layout: 'moviment/layout',
     useExternalStyles,
   });
 });

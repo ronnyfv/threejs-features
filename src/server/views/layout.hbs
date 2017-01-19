@@ -2,17 +2,19 @@
 <html>
 
 <head>
-    <title></title>
-    {{#if useExternalStyles}}
-    <link rel='stylesheet' href='/build/application.css' /> {{/if}}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" /> 
+  
+  {{#if useExternalStyles}}
+    <link rel='stylesheet' href='/build/application.css' />
+  {{/if}}
 </head>
 
 <body>
+  {{{body}}}
 
-    {{{body}}}
-
-    <script type="text/javascript" src="/build/vendor.js"></script>
-    <script type="text/javascript" src="/build/application.js"></script>
+  <script type="text/javascript" src="/build/vendor.js"></script>
+  <script type="text/javascript" src="/build/application.js"></script>
 
 </body>
 
